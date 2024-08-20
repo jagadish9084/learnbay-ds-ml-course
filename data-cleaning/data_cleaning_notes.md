@@ -1,13 +1,16 @@
-# Data cleanin
+# Data cleaning
+
+## Overview
 Data cleaning is a crucial step in the machine learning (ML) pipeline, as it involves identifying and removing any missing, duplicate, or irrelevant data.
 The goal of data cleaning is to ensure that the data is accurate, consistent, and free of errors, as incorrect or inconsistent data can negatively impact the performance of the ML model.
 Data cleaning, also known as data cleansing or data preprocessing.
-Data cleaning is a crucial step in data science, as it ensures that the data you use for analysis or modeling is accurate, consistent, and free of errors. Here are the common steps involved in data cleaning:
+Data cleaning is a crucial step in data science, as it ensures that the data you use for analysis or modeling is accurate, consistent, and free of errors. Here are the:
 
-1. Data Inspection
+## Common steps involved in data cleaning:
+### 1. Data Inspection
 Understand the Data: Review the data to understand its structure, types of variables, and general content.
 Identify Issues: Look for missing values, outliers, duplicates, inconsistencies, and incorrect data types.
-2. Handling Missing Values
+### 2. Handling Missing Values
 Identify Missing Data: Determine which columns or rows have missing values.
 Imputation: Replace missing values with appropriate substitutes, like the mean, median, mode, or a constant value.
 Removal: In some cases, rows or columns with a high percentage of missing values might be removed.
