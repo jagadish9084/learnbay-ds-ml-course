@@ -1,73 +1,41 @@
 # Model Performance and Evaluation
 
-## Underfitting and Overfitting
+## Contents
+1. [Residuals](#residuals)
+2. [Mean Squared Error (MSE)](#mean-squared-error-mse)
+3. [R-Squared (R²)](#r-squared-r)
+4. [Adjusted R-Squared (Adjusted R²)](#adjusted-r-squared-adjusted-r)
+5. [Underfitting](#underfitting)
+6. [Overfitting](#overfitting)
+7. [Noise in Data](#noise-in-data)
+8. [P-Values](#p-values)
+9. [Variance Inflation Factor (VIF)](#variance-inflation-factor-vif)
+10. [Multicollinearity](#multicollinearity)
 
-### Underfitting
+---
 
-**Definition:**  
-Underfitting occurs when a model is too simple to capture the underlying patterns in the data. It doesn’t perform well on either the training data or new data.
-
-**Signs:**
-- **Low Accuracy:** The model has poor performance on both training and test data.
-- **Simple Model:** The model might have too few parameters or a too simplistic form.
-
-**Example:**  
-Using a linear model to fit data that has a non-linear relationship.
-
-**How to Address Underfitting:**
-- **Increase Model Complexity:** Use a more complex model with more parameters or features.
-- **Add More Features:** Include additional relevant features that might capture more of the data’s variability.
-- **Decrease Regularization:** If using regularization, reduce its strength to allow the model to fit the training data better.
-
-### Overfitting
+## Residuals
 
 **Definition:**  
-Overfitting occurs when a model is too complex and learns the noise or random fluctuations in the training data rather than the underlying patterns. It performs well on the training data but poorly on new, unseen data.
+Residuals are the differences between the actual values and the values predicted by the model. They represent the error in the model’s predictions.
 
-**Signs:**
-- **High Training Accuracy, Low Test Accuracy:** The model performs very well on the training data but poorly on the validation or test data.
-- **Complex Model:** The model may have too many parameters, or it might be overly flexible.
+**Formula:**
 
-**Example:**  
-A very complex polynomial regression model that fits the training data perfectly but fails to generalize to new data.
+\[
+\text{Residual}_i = y_i - \hat{y}_i
+\]
 
-**How to Address Overfitting:**
-- **Simplify the Model:** Reduce the complexity of the model by using fewer parameters or a simpler algorithm.
-- **Use Regularization:** Apply techniques like L1 or L2 regularization to penalize overly complex models.
-- **Increase Training Data:** More data can help the model generalize better and reduce the risk of overfitting.
-- **Cross-Validation:** Use cross-validation techniques to ensure that the model performs well on different subsets of the data.
+- **\(y_i\):** Actual value of the target variable.
+- **\(\hat{y}_i\):** Predicted value of the target variable.
 
-**Summary:**
-- **Underfitting:** Model is too simple, not capturing the data’s patterns. It performs poorly on both training and test data.
-- **Overfitting:** Model is too complex, capturing noise rather than patterns. It performs well on training data but poorly on test data.
-
-The goal is to find a balance where the model is complex enough to capture the underlying patterns but not so complex that it fits the noise in the training data. This balance is often achieved through techniques like cross-validation and careful model selection.
-
-## Noise in Data
-
-**Definition:**  
-Noise consists of random, unpredictable errors or variations in the data. These can come from measurement errors, data entry mistakes, or other sources of variability that don't represent real patterns.
-
-**Impact:**  
-Noise can obscure the true relationship between variables, making it harder for the model to learn meaningful patterns. If a model learns to fit this noise, it might perform well on the training data but poorly on new data.
-
-**Examples of Noise:**
-- **Measurement Errors:** Inaccuracies in measurement tools can introduce noise.
-- **Data Entry Errors:** Mistakes made when entering data into a database can create inconsistencies.
-- **Random Fluctuations:** Variations in data that are not systematic or meaningful, such as random changes in a person's daily mood.
-
-**How Models Deal with Noise:**
-- **Overfitting:** A model that overfits the training data may have learned to capture this noise as if it were a pattern, leading to excellent performance on the training data but poor performance on new data.
-- **Generalization:** The goal is to build a model that captures the true underlying patterns and relationships while ignoring the noise. This helps the model generalize well to new, unseen data.
-
-**Strategies to Mitigate Noise:**
-- **Data Cleaning:** Remove or correct errors and inconsistencies in the data.
-- **Robust Algorithms:** Use algorithms that are less sensitive to noise, such as regularized regression techniques.
-- **Feature Selection:** Focus on the most relevant features and exclude those that might be more likely to contain noise.
-- **Cross-Validation:** Use cross-validation techniques to assess how well the model generalizes to new data and adjust the complexity accordingly.
+**Interpretation:**
+- **Residuals Plot:** A plot of residuals versus predicted values can help identify patterns such as non-linearity or heteroscedasticity.
+- **Normal Distribution of Residuals:** Residuals should be normally distributed around zero. If they are not, it might indicate issues with the model.
 
 **Summary:**  
-Noise refers to the random errors and variations in the data that don't reflect true relationships. Effective modeling involves distinguishing between true patterns and noise, ensuring that the model learns from the relevant patterns without being misled by random fluctuations.
+Residuals help to assess the accuracy of the model by indicating how far off the predictions are from the actual values. Analyzing residuals can provide insights into potential improvements for the model.
+
+---
 
 ## Mean Squared Error (MSE)
 
@@ -119,3 +87,155 @@ In this case, the MSE is 0.04, which indicates the average squared difference be
 
 **Summary:**  
 MSE is a key metric for evaluating regression models, helping to quantify the average squared deviation of predictions from actual values. Lower MSE values generally indicate better model performance, though it is important to consider its sensitivity to outliers.
+
+---
+
+## R-Squared (R²)
+
+R-Squared (R²), also known as the coefficient of determination, is a statistical measure that represents the proportion of the variance in the dependent variable that is predictable from the independent variables.
+
+**Formula:**
+
+\[
+R^2 = 1 - \frac{\text{SS}_{\text{res}}}{\text{SS}_{\text{tot}}}
+\]
+
+- **\(\text{SS}_{\text{res}}\):** Sum of Squares of Residuals (the sum of squared differences between the actual and predicted values).
+- **\(\text{SS}_{\text{tot}}\):** Total Sum of Squares (the sum of squared differences between the actual values and their mean).
+
+**Interpretation:**
+- **\(R^2 = 1\):** The model explains all the variability in the target variable. Perfect fit.
+- **\(R^2 = 0\):** The model does not explain any of the variability in the target variable. The predictions are no better than the mean of the target values.
+- **\(R^2 < 0\):** The model performs worse than a model that simply predicts the mean of the target values.
+
+**Summary:**  
+R² indicates the proportion of the variance in the dependent variable that is predictable from the independent variables. A higher R² value indicates a better fit of the model to the data.
+
+---
+
+## Adjusted R-Squared (Adjusted R²)
+
+**Definition:**  
+Adjusted R-Squared adjusts the R-Squared value to account for the number of predictors in the model. It provides a more accurate measure of model fit when multiple predictors are used.
+
+**Formula:**
+
+\[
+\text{Adjusted } R^2 = 1 - \left(\frac{1 - R^2}{n - 1}\right) \times (n - k - 1)
+\]
+
+- **\(R^2\):** R-Squared value.
+- **\(n\):** Number of observations.
+- **\(k\):** Number of predictors.
+
+**Interpretation:**
+- **Higher Adjusted R²:** Indicates a better fit of the model when accounting for the number of predictors. It penalizes the addition of irrelevant predictors.
+- **Lower Adjusted R²:** May suggest that the model is not capturing the underlying patterns effectively, even when more predictors are added.
+
+**Summary:**  
+Adjusted R² provides a more reliable measure of model performance by accounting for the number of predictors. It helps to evaluate whether additional predictors improve the model's explanatory power.
+
+---
+
+## Underfitting
+
+**Definition:**  
+Underfitting occurs when a model is too simple to capture the underlying patterns in the data. It doesn’t perform well on either the training data or new data.
+
+**Signs:**
+- **Low Accuracy:** The model has poor performance on both training and test data.
+- **Simple Model:** The model might have too few parameters or a too simplistic form.
+
+**Example:**  
+Using a linear model to fit data that has a non-linear relationship.
+
+**How to Address Underfitting:**
+- **Increase Model Complexity:** Use a more complex model with more parameters or features.
+- **Add More Features:** Include additional relevant features that might capture more of the data’s variability.
+- **Decrease Regularization:** If using regularization, reduce its strength to allow the model to fit the training data better.
+
+---
+
+## Overfitting
+
+**Definition:**  
+Overfitting occurs when a model is too complex and learns the noise or random fluctuations in the training data rather than the underlying patterns. It performs well on the training data but poorly on new, unseen data.
+
+**Signs:**
+- **High Training Accuracy, Low Test Accuracy:** The model performs very well on the training data but poorly on the validation or test data.
+- **Complex Model:** The model may have too many parameters, or it might be overly flexible.
+
+**Example:**  
+A very complex polynomial regression model that fits the training data perfectly but fails to generalize to new data.
+
+**How to Address Overfitting:**
+- **Simplify the Model:** Reduce the complexity of the model by using fewer parameters or a simpler algorithm.
+- **Use Regularization:** Apply techniques like L1 or L2 regularization to penalize overly complex models.
+- **Increase Training Data:** More data can help the model generalize better and reduce the risk of overfitting.
+- **Cross-Validation:** Use cross-validation techniques to ensure that the model performs well on different subsets of the data.
+
+**Summary:**
+- **Underfitting:** Model is too simple, not capturing the data’s patterns. It performs poorly on both training and test data.
+- **Overfitting:** Model is too complex, capturing noise rather than patterns. It performs well on training data but poorly on test data.
+
+The goal is to find a balance where the model generalizes well to new data while adequately capturing the underlying patterns in the training data.
+
+---
+
+## P-Values
+
+**Definition:**  
+P-values are used to determine the statistical significance of the predictors in the model. They indicate whether the effect observed in the data is likely to be due to chance.
+
+**Interpretation:**
+- **Low P-Value (typically < 0.05):** Suggests that the predictor has a significant effect on the target variable.
+- **High P-Value:** Suggests that the predictor may not be significantly related to the target variable.
+
+**Summary:**  
+P-values help in assessing whether the predictors in the model are statistically significant. Predictors with low p-values are considered significant and are likely contributing to the model.
+
+---
+
+## Variance Inflation Factor (VIF)
+
+**Definition:**  
+Variance Inflation Factor (VIF) measures how much the variance of an estimated regression coefficient increases due to multicollinearity.
+
+**Formula:**
+
+\[
+\text{VIF}_i = \frac{1}{1 - R_i^2}
+\]
+
+- **\(R_i^2\):** R-Squared value of the regression of the \(i\)-th predictor on all other predictors.
+
+**Interpretation:**
+- **VIF < 10:** Indicates that multicollinearity is not a severe problem.
+- **VIF > 10:** Indicates high multicollinearity, which might be problematic.
+
+**Summary:**  
+VIF is used to detect multicollinearity among predictors. High VIF values suggest that a predictor is highly correlated with other predictors, which can affect the stability and interpretation of the model.
+
+---
+
+## Multicollinearity
+
+**Definition:**  
+Multicollinearity occurs when two or more predictors in a regression model are highly correlated. This can lead to unreliable estimates of the regression coefficients.
+
+**Detection:**
+- **Correlation Matrix:** Checking the correlation between predictors.
+- **VIF Values:** High VIF values indicate multicollinearity.
+
+**Impact:**
+- **Unstable Coefficients:** High multicollinearity can cause large changes in the coefficients with small changes in the model or data.
+- **Reduced Interpretability:** Makes it difficult to assess the individual effect of each predictor on the target variable.
+
+**How to Address Multicollinearity:**
+- **Remove Highly Correlated Predictors:** Identify and remove predictors with high correlation.
+- **Combine Predictors:** Combine correlated predictors into a single feature.
+- **Regularization:** Use techniques like L1 regularization (Lasso) to penalize and potentially eliminate redundant predictors.
+
+**Summary:**  
+Multicollinearity can affect the reliability and interpretability of a regression model. Detecting and addressing multicollinearity is essential for building stable and interpretable models.
+
