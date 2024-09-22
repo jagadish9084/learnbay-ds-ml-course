@@ -143,13 +143,19 @@ Adjusted R² provides a more reliable measure of model performance by accounting
 
 ### Bias:
 
-- Bias refers to the error due to overly simplistic assumptions in the learning model. A high bias model may not capture the underlying patterns of the data well
+- Bias is the error that occurs when a model is too simple and can't capture the true patterns in the data.
+- High bias means the model makes strong assumptions and doesn't learn enough from the data
+- As a result, the model performs poorly on both training and test data because it oversimplifies the relationships.
 - In linear regression, bias is high when the model is too simple (e.g., missing important variables, not capturing non-linear relationships)
+- For example, in linear regression, if you try to fit a straight line to data that has a curved pattern, your model will have high bias because it's too simple to capture the actual trend.
 
 ### Variance:
 
-- Variance refers to the error due to the model's sensitivity to small fluctuations in the training data. A high variance model pays too much attention to the noise in the training set, making it less generalizable to unseen data.
+- Variance is the error that happens when a model is too sensitive to the training data, capturing even small, random fluctuations (noise).
+- High variance means the model fits the training data very well but doesn't generalize to new, unseen data.
+- As a result, the model performs well on the training data but poorly on test data because it has learned details that are not general patterns.
 - In linear regression, variance increases as the model becomes more complex (e.g., using too many features, overfitting to the training data).
+- For example, in linear regression, if you include too many features or unnecessary complexity, your model will have high variance, making it overfit the training data and fail to generalize.
 
 ### Bias-Variance Tradeoff in Linear Regression
 
