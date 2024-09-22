@@ -161,9 +161,10 @@ Adjusted R² provides a more reliable measure of model performance by accounting
 
 | **Scenario**      | **Bias**        | **Variance**     | **Model Behavior**  | **Example in Linear Regression**                  |
 |-------------------|-----------------|------------------|---------------------|---------------------------------------------------|
-| **Overfitting**   | Low Bias        | High Variance    | Model too complex   | Too many predictors or polynomial terms           |
-| **Underfitting**  | High Bias       | Low Variance     | Model too simple    | Missing important predictors or relationships     |
-| **Generalized**   | Optimal Bias    | Optimal Variance | Good balance        | Right set of predictors, simple but effective     |
+| **Overfitting**   | Low Bias        | High Variance    | The model is too complex and learns even noise from the training data, leading to poor performance on new data. | Including too many predictors or adding unnecessary complexity like polynomial terms. |
+| **Underfitting**  | High Bias       | Low Variance     | The model is too simple, misses important patterns, and performs poorly on both training and test data. | Using very few predictors or assuming only linear relationships when data is more complex. |
+| **Generalized**   | Optimal Bias    | Optimal Variance | The model captures the true patterns in data and generalizes well to new data, balancing simplicity and complexity. | Using just enough predictors to capture real relationships without over-complicating the model. |
+
 
 ---
 
