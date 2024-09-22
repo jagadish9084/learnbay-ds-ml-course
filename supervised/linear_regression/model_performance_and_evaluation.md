@@ -5,12 +5,13 @@
 2. [Mean Squared Error (MSE)](#mean-squared-error-mse)
 3. [R-Squared (R²)](#r-squared-r)
 4. [Adjusted R-Squared (Adjusted R²)](#adjusted-r-squared-adjusted-r)
-5. [Underfitting](#underfitting)
-6. [Overfitting](#overfitting)
-7. [Noise in Data](#noise-in-data)
-8. [P-Values](#p-values)
-9. [Variance Inflation Factor (VIF)](#variance-inflation-factor-vif)
-10. [Multicollinearity](#multicollinearity)
+5. [Bias and Variance](#bias-and-variance)
+6. [Underfitting](#underfitting)
+7. [Overfitting](#overfitting)
+8. [Noise in Data](#noise-in-data)
+9. [P-Values](#p-values)
+10. [Variance Inflation Factor (VIF)](#variance-inflation-factor-vif)
+11. [Multicollinearity](#multicollinearity)
 
 ---
 
@@ -136,6 +137,29 @@ Adjusted R-Squared adjusts the R-Squared value to account for the number of pred
 Adjusted R² provides a more reliable measure of model performance by accounting for the number of predictors. It helps to evaluate whether additional predictors improve the model's explanatory power.
 
 ---
+## Bias and Variance
+
+   Bias and variance are two sources of error in machine learning models, including linear regression. They help explain the model's performance in terms of overfitting, underfitting, and generalization.
+
+### Bias:
+
+- Bias refers to the error due to overly simplistic assumptions in the learning model. A high bias model may not capture the underlying patterns of the data well
+- In linear regression, bias is high when the model is too simple (e.g., missing important variables, not capturing non-linear relationships)
+
+### Variance:
+
+- Variance refers to the error due to the model's sensitivity to small fluctuations in the training data. A high variance model pays too much attention to the noise in the training set, making it less generalizable to unseen data.
+- In linear regression, variance increases as the model becomes more complex (e.g., using too many features, overfitting to the training data).
+
+### Bias-Variance Tradeoff in Linear Regression
+
+| **Scenario**      | **Bias**        | **Variance**     | **Model Behavior**  | **Example in Linear Regression**                  |
+|-------------------|-----------------|------------------|---------------------|---------------------------------------------------|
+| **Overfitting**   | Low Bias        | High Variance    | Model too complex   | Too many predictors or polynomial terms           |
+| **Underfitting**  | High Bias       | Low Variance     | Model too simple    | Missing important predictors or relationships     |
+| **Generalized**   | Optimal Bias    | Optimal Variance | Good balance        | Right set of predictors, simple but effective     |
+
+---
 
 ## Underfitting
 
@@ -148,6 +172,11 @@ Underfitting occurs when a model is too simple to capture the underlying pattern
 
 **Example:**  
 Using a linear model to fit data that has a non-linear relationship.
+
+**Bias-Variance relationship:**  
+
+- High Bias, Low Variance: The model makes strong assumptions, leading to underfitting because it is too simple to capture the actual trends. Both training and test error are high.
+- In linear regression: This occurs when not enough predictors are included, or important relationships between variables are not captured.
 
 **How to Address Underfitting:**
 - **Increase Model Complexity:** Use a more complex model with more parameters or features.
@@ -168,6 +197,11 @@ Overfitting occurs when a model is too complex and learns the noise or random fl
 **Example:**  
 A very complex polynomial regression model that fits the training data perfectly but fails to generalize to new data.
 
+**Bias-Variance relationship:**  
+
+- Low Bias, High Variance: The model captures almost every detail and noise in the training data. This results in very low training error but high test error.
+- In linear regression: Overfitting happens when you use too many predictors or the model is too complex, resulting in high variance.
+  
 **How to Address Overfitting:**
 - **Simplify the Model:** Reduce the complexity of the model by using fewer parameters or a simpler algorithm.
 - **Use Regularization:** Apply techniques like L1 or L2 regularization to penalize overly complex models.
