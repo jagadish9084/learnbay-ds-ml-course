@@ -15,7 +15,7 @@ $$
 $$
 
 Where:
-- \( z = \theta^T x \), the linear combination of the input features.
+- z = θ<sup>T</sup>x, the linear combination of the input features.
 - \( e \) is Euler's number, approximately 2.718.
 
 ### Why use the sigmoid function?
@@ -46,7 +46,7 @@ h_\theta(x) = \sigma(\theta^T x) = \frac{1}{1 + e^{-\theta^T x}}
 $$
 
 Where:
-- \( \theta \) represents the model parameters (weights and intercept).
+- &theta; represents the model parameters (weights and intercept).
 - \( x \) is the vector of features.
 
 ### Example Dataset:
@@ -64,7 +64,7 @@ Here, the target variable "Pass" is binary: Yes (1) or No (0). The model will us
 
 Suppose we have two features (Hours Studied and Attendance Rate), and our initial model coefficients are:
 \[
-\theta_0 = -4, \theta_1 = 0.3, \theta_2 = 2
+θ<sub>0</sub> = -4, θ<sub>1</sub> = 0.3, θ<sub>2</sub> = 2
 \]
 
 For a student who studied 5 hours and had an 80% attendance rate, the linear combination would be:
@@ -99,8 +99,8 @@ $$
 
 Where:
 - \( m \) is the number of training examples.
-- \( y^{(i)} \) is the actual label (0 or 1).
-- \( h_\theta(x^{(i)}) \) is the predicted probability for the i-th example.
+- y<sup>(i)</sup> is the actual label (0 or 1).
+- h<sub>θ</sub>(x<sup>(i)</sup>) is the predicted probability for the i-th example.
 
 ### Explanation:
 - For a true positive (y = 1), the cost is high if the predicted probability is close to 0.
@@ -117,13 +117,13 @@ $$
 $$
 
 Where:
-- \( \alpha \) is the learning rate (step size).
-- \( \frac{\partial}{\partial \theta_j} J(\theta) \) is the partial derivative of the cost function with respect to \( \theta_j \).
+- &alpha; is the learning rate (step size).
+- (∂/∂θ<sub>j</sub>) J(θ) is the partial derivative of the cost function with respect to θ<sub>j</sub>.
 
 This process is repeated iteratively until the model converges (i.e., the cost function stops decreasing).
 
 ### Example:
-If the initial value of \( \theta_1 = 0.3 \) and the gradient of the cost function is \( 0.02 \), then with a learning rate \( \alpha = 0.1 \), the update would be:
+If the initial value of θ<sub>1</sub> = 0.3 and the gradient of the cost function is `0.02`, then with a learning rate &alpha; = 0.1, the update would be:
 
 $$
 \theta_1 := 0.3 - 0.1 \times 0.02 = 0.298
