@@ -231,7 +231,7 @@ $$
 ### 6.5 F-Beta Score
 
 #### Definition:
-The **F-Beta Score** is a generalized version of the F1 Score. It allows you to adjust the balance between precision and recall by using a parameter \( \beta \) that weighs recall more heavily when \( \beta > 1 \), or precision more heavily when \( \beta < 1 \).
+The **F-Beta Score** is a generalized version of the F1 Score. It allows you to adjust the balance between precision and recall by using a parameter \( \beta \) that weighs recall more heavily when &beta; > 1, or precision more heavily when &beta; < 1.
 
 $$
 F_\beta = (1 + \beta^2) \times \frac{\text{Precision} \times \text{Recall}}{(\beta^2 \times \text{Precision}) + \text{Recall}}
@@ -244,11 +244,11 @@ $$
 
 #### When to Use:
 - **Use F-Beta Score when you need to prioritize either precision or recall more than the other**, depending on the specific problem. For example:
-  - **High Recall Priority (\( \beta > 1 \))**: In medical diagnoses, missing a disease (false negative) could have severe consequences, so higher recall is important.
-  - **High Precision Priority (\( \beta < 1 \))**: In fraud detection, labeling legitimate transactions as fraud (false positives) can cause user dissatisfaction, so higher precision is crucial.
+  - **High Recall Priority (&beta; > 1)**: In medical diagnoses, missing a disease (false negative) could have severe consequences, so higher recall is important.
+  - **High Precision Priority (&beta; < 1)**: In fraud detection, labeling legitimate transactions as fraud (false positives) can cause user dissatisfaction, so higher precision is crucial.
 
 #### Example:
-If you care more about recall and set \( \beta = 2 \), and if precision is 80% and recall is 90%, the F2 score would be:
+If you care more about recall and set \( &beta; = 2 \), and if precision is 80% and recall is 90%, the F2 score would be:
 
 $$
 F_2 = (1 + 2^2) \times \frac{0.80 \times 0.90}{(2^2 \times 0.80) + 0.90} = 5 \times \frac{0.72}{3.2 + 0.90} = 5 \times \frac{0.72}{4.1} \approx 0.88
