@@ -231,16 +231,16 @@ $$
 ### 6.5 F-Beta Score
 
 #### Definition:
-The **F-Beta Score** is a generalized version of the F1 Score. It allows you to adjust the balance between precision and recall by using a parameter \( \beta \) that weighs recall more heavily when &beta; > 1, or precision more heavily when &beta; < 1.
+The **F-Beta Score** is a generalized version of the F1 Score. It allows you to adjust the balance between precision and recall by using a parameter &beta; that weighs recall more heavily when &beta; > 1, or precision more heavily when &beta; < 1.
 
 $$
 F_\beta = (1 + \beta^2) \times \frac{\text{Precision} \times \text{Recall}}{(\beta^2 \times \text{Precision}) + \text{Recall}}
 $$
 
 #### Explanation:
-- **\( \beta = 1 \)** results in the F1 Score, where precision and recall are equally weighted.
-- **\( \beta > 1 \)** gives more weight to recall, which is useful when false negatives are more costly.
-- **\( \beta < 1 \)** gives more weight to precision, which is useful when false positives are more costly.
+- **\( &beta; = 1 \)** results in the F1 Score, where precision and recall are equally weighted.
+- **\( &beta; > 1 \)** gives more weight to recall, which is useful when false negatives are more costly.
+- **\( &beta; < 1 \)** gives more weight to precision, which is useful when false positives are more costly.
 
 #### When to Use:
 - **Use F-Beta Score when you need to prioritize either precision or recall more than the other**, depending on the specific problem. For example:
@@ -352,4 +352,4 @@ Choosing the right metric depends on the problem you're solving and the importan
 - **Use F1 Score**: This is useful when you care about both false positives and false negatives, especially in imbalanced datasets (e.g., **information retrieval**, **text classification**).
 
 ### 5. If you want to prioritize either precision or recall more:
-- **Use F-Beta Score**: Choose \( \beta > 1 \) if recall is more important, and \( \beta < 1 \) if precision is more important.
+- **Use F-Beta Score**: Choose \( &beta; > 1 \) if recall is more important, and \( &beta; < 1 \) if precision is more important.
