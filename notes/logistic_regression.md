@@ -10,9 +10,9 @@ The **sigmoid function** is the core of logistic regression. It transforms any r
 
 ### Mathematical Definition:
 
-\[
+$$
 \sigma(z) = \frac{1}{1 + e^{-z}}
-\]
+$$
 
 Where:
 - \( z = \theta^T x \), the linear combination of the input features.
@@ -27,9 +27,9 @@ It helps in mapping the output to probabilities:
 
 Consider the problem of predicting whether a student passes or fails based on their study hours. If \( z = 0.8 \) (calculated from input features), then:
 
-\[
+$$
 P(\text{Pass}) = \frac{1}{1 + e^{-0.8}} \approx 0.69
-\]
+$$
 
 This means the model predicts a 69% probability that the student will pass.
 
@@ -41,9 +41,9 @@ The logistic regression model predicts probabilities using the sigmoid function.
 
 ### Model Hypothesis:
 
-\[
+$$
 h_\theta(x) = \sigma(\theta^T x) = \frac{1}{1 + e^{-\theta^T x}}
-\]
+$$
 
 Where:
 - \( \theta \) represents the model parameters (weights and intercept).
@@ -69,19 +69,19 @@ Suppose we have two features (Hours Studied and Attendance Rate), and our initia
 
 For a student who studied 5 hours and had an 80% attendance rate, the linear combination would be:
 
-\[
+$$
 z = \theta_0 + \theta_1 \times \text{Hours} + \theta_2 \times \text{Attendance Rate}
-\]
+$$
 
-\[
+$$
 z = -4 + (0.3 \times 5) + (2 \times 0.8) = -4 + 1.5 + 1.6 = -0.9
-\]
+$$
 
 Now, applying the sigmoid function:
 
-\[
+$$
 P(\text{Pass}) = \frac{1}{1 + e^{0.9}} \approx 0.29
-\]
+$$
 
 Thus, the model predicts a 29% probability that the student will pass.
 
@@ -93,9 +93,9 @@ In Logistic Regression, we use the **Log-Loss** (or **Cross-Entropy Loss**) to m
 
 ### Cost Function Definition:
 
-\[
+$$
 J(\theta) = -\frac{1}{m} \sum_{i=1}^{m} \left[ y^{(i)} \log(h_\theta(x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta(x^{(i)})) \right]
-\]
+$$
 
 Where:
 - \( m \) is the number of training examples.
@@ -112,9 +112,9 @@ Where:
 
 Logistic Regression uses **Gradient Descent** to minimize the cost function by updating the model’s coefficients. The update rule is:
 
-\[
+$$
 \theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta)
-\]
+$$
 
 Where:
 - \( \alpha \) is the learning rate (step size).
@@ -125,9 +125,9 @@ This process is repeated iteratively until the model converges (i.e., the cost f
 ### Example:
 If the initial value of \( \theta_1 = 0.3 \) and the gradient of the cost function is \( 0.02 \), then with a learning rate \( \alpha = 0.1 \), the update would be:
 
-\[
+$$
 \theta_1 := 0.3 - 0.1 \times 0.02 = 0.298
-\]
+$$
 
 ---
 
@@ -153,9 +153,9 @@ Evaluating a logistic regression model requires various classification metrics. 
 #### Definition:
 Accuracy is the ratio of correctly predicted observations to the total observations. It tells us how often the model is correct overall.
 
-\[
+$$
 \text{Accuracy} = \frac{\text{True Positives} + \text{True Negatives}}{\text{Total Observations}}
-\]
+$$
 
 #### When to Use:
 - **Use accuracy when the classes are balanced** (i.e., the number of positives and negatives is roughly equal).
@@ -173,9 +173,9 @@ If we have 100 test examples, and the model correctly predicts 90 of them (60 tr
 #### Definition:
 Precision measures the proportion of true positive predictions out of all positive predictions made by the model. It answers the question: **Out of all predicted positives, how many were actually positive?**
 
-\[
+$$
 \text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
-\]
+$$
 
 #### When to Use:
 - **Use precision when the cost of false positives is high**, i.e., when you want to be very sure that positive predictions are correct.
@@ -184,18 +184,18 @@ Precision measures the proportion of true positive predictions out of all positi
 #### Example:
 If the model predicts 50 cases as positive, but only 40 are actually positive, and 10 are false positives, the precision would be:
 
-\[
+$$
 \text{Precision} = \frac{40}{40 + 10} = \frac{40}{50} = 0.80 = 80\%
-\]
+$$
 
 ### 6.3 Recall (Sensitivity or True Positive Rate)
 
 #### Definition:
 Recall measures the proportion of actual positives that are correctly identified. It answers the question: **Out of all actual positives, how many were correctly predicted?**
 
-\[
+$$
 \text{Recall} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
-\]
+$$
 
 #### When to Use:
 - **Use recall when the cost of false negatives is high**, i.e., when it’s crucial to catch as many positives as possible.
@@ -204,18 +204,18 @@ Recall measures the proportion of actual positives that are correctly identified
 #### Example:
 If there are 50 actual positive cases, and the model correctly predicts 45 of them (5 false negatives), the recall would be:
 
-\[
+$$
 \text{Recall} = \frac{45}{45 + 5} = \frac{45}{50} = 0.90 = 90\%
-\]
+$$
 
 ### 6.4 F1 Score
 
 #### Definition:
 The **F1 Score** is the harmonic mean of precision and recall. It provides a single measure that balances both precision and recall, especially useful when you want to balance the trade-off between false positives and false negatives.
 
-\[
+$$
 F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-\]
+$$
 
 #### When to Use:
 - **Use F1 Score when you need a balance between precision and recall**. This is especially important in cases where the class distribution is imbalanced, and both false positives and false negatives matter.
@@ -224,18 +224,18 @@ F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \t
 #### Example:
 If precision is 80% and recall is 90%, the F1 score would be:
 
-\[
+$$
 F1 = 2 \times \frac{0.80 \times 0.90}{0.80 + 0.90} = 2 \times \frac{0.72}{1.7} \approx 0.847 = 84.7\%
-\]
+$$
 
 ### 6.5 F-Beta Score
 
 #### Definition:
 The **F-Beta Score** is a generalized version of the F1 Score. It allows you to adjust the balance between precision and recall by using a parameter \( \beta \) that weighs recall more heavily when \( \beta > 1 \), or precision more heavily when \( \beta < 1 \).
 
-\[
+$$
 F_\beta = (1 + \beta^2) \times \frac{\text{Precision} \times \text{Recall}}{(\beta^2 \times \text{Precision}) + \text{Recall}}
-\]
+$$
 
 #### Explanation:
 - **\( \beta = 1 \)** results in the F1 Score, where precision and recall are equally weighted.
@@ -250,18 +250,18 @@ F_\beta = (1 + \beta^2) \times \frac{\text{Precision} \times \text{Recall}}{(\be
 #### Example:
 If you care more about recall and set \( \beta = 2 \), and if precision is 80% and recall is 90%, the F2 score would be:
 
-\[
+$$
 F_2 = (1 + 2^2) \times \frac{0.80 \times 0.90}{(2^2 \times 0.80) + 0.90} = 5 \times \frac{0.72}{3.2 + 0.90} = 5 \times \frac{0.72}{4.1} \approx 0.88
-\]
+$$
 
 ### 6.6 ROC Curve (Receiver Operating Characteristic)
 
 #### Definition:
 The **ROC curve** is a graphical representation of a model’s performance across different classification thresholds. It plots the **True Positive Rate** (Recall) against the **False Positive Rate** (FPR):
 
-\[
+$$
 \text{False Positive Rate} = \frac{\text{False Positives}}{\text{False Positives} + \text{True Negatives}}
-\]
+$$
 
 #### When to Use:
 - **Use the ROC curve when you need to evaluate the model’s performance at different classification thresholds**. It’s especially useful for binary classification problems where the output is a probability.
@@ -296,16 +296,16 @@ Regularization helps prevent **overfitting** by penalizing large coefficients. T
 ### L2 Regularization (Ridge):
 Adds a penalty proportional to the square of the coefficients.
 
-\[
+$$
 J(\theta) = -\frac{1}{m} \sum \text{Log-Loss} + \frac{\lambda}{2m} \sum_{j=1}^{n} \theta_j^2
-\]
+$$
 
 ### L1 Regularization (Lasso):
 Adds a penalty proportional to the absolute value of the coefficients.
 
-\[
+$$
 J(\theta) = -\frac{1}{m} \sum \text{Log-Loss} + \frac{\lambda}{m} \sum_{j=1}^{n} |\theta_j|
-\]
+$$
 
 ---
 
