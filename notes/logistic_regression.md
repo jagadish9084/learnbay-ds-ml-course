@@ -136,8 +136,8 @@ $$
 Logistic Regression predicts probabilities, but we need a threshold to assign class labels (0 or 1). Typically, the threshold is set to 0.5.
 
 ### Decision Rule:
-- If \( P(\text{Class} = 1) \geq 0.5 \), predict class 1 (e.g., Pass).
-- If \( P(\text{Class} = 1) < 0.5 \), predict class 0 (e.g., Fail).
+- If P(Class = 1) &ge; 0.5, predict class 1 (e.g., Pass).
+- If P(Class = 1) < 0.5, predict class 0 (e.g., Fail).
 
 ### Example:
 For the earlier student with a predicted probability of 29% (0.29), we classify them as "Fail" since 0.29 < 0.5.
@@ -164,9 +164,9 @@ $$
 #### Example:
 If we have 100 test examples, and the model correctly predicts 90 of them (60 true positives and 30 true negatives), then the accuracy would be:
 
-\[
+$$
 \text{Accuracy} = \frac{60 + 30}{100} = 0.90 = 90\%
-\]
+$$
 
 ### 6.2 Precision
 
